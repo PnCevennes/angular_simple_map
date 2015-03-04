@@ -1,0 +1,47 @@
+
+#main-logo {
+  height:350px;
+}
+#mapc {
+  width: 100%;
+  position: fixed;
+  height: 100%;
+  margin:0;
+  padding:0; 
+}
+
+.container-fluid {
+  padding: 0px;
+  margin:0px;
+}
+.navbar{
+  padding: 0px;
+  margin:0px;
+}
+#map-title { color:white; }
+
+.img-overview{
+  height: 310px;
+}
+
+.img-overview  .img-responsive {
+    display: block;
+    width: auto;
+    max-height: 100%;
+}
+
+.leaflet-bottom {position: fixed;}
+.legend{
+  background-color: rgba(255, 255, 255, 0.7);
+  padding:15px;
+}
+.legend div label, .legend div span {
+  display:block;
+  text-align:center;
+  font-size:9px;
+}
+.legend div span {
+  height: 10px;
+  width:20%;
+  margin-right:5px;
+}
