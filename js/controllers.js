@@ -40,8 +40,7 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
       }
       map = L.map('mapc', { zoomControl:true });
       $scope.map = map;
-            
-            
+      
       //Display layers
       layerscontrol = [];
       angular.forEach($scope.mapinfo.layers.overlays, function(value, key) {
@@ -106,7 +105,6 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
     }, true);
   
 
-    
     $scope.changeTiles = function(nummap) {
       if ($scope.baselayers[nummap].active) {
         map.removeLayer($scope.baselayers[nummap].map);
