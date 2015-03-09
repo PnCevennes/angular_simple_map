@@ -16,9 +16,9 @@ MapControllers.controller('ListMapController', [ '$scope', '$routeParams',"MapsS
 ]);
 
 
-MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','MapsServices','LeafletServices', '$location','filterFilter','$http','$sce',
+MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','MapsServices','LeafletServices', '$location','filterFilter','$http','$sce','$rootScope',
   
-  function($scope, $routeParams, MapsServices, LeafletServices, $location, filterFilter, $http, $sce) {
+  function($scope, $routeParams, MapsServices, LeafletServices, $location, filterFilter, $http, $sce, $rootScope) {
     $scope.mapinfo = MapsServices.getOne($routeParams.mapsId);
     
     if (! MapsServices.maps.length) {
@@ -28,7 +28,6 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
         $scope.$apply();
       });
     }
-    
     
     $scope.$watch('mapinfo', function(scope){
       if (!$scope.mapinfo) {
@@ -122,6 +121,19 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
       });
     };
 
+    $scope.l_prev_sel = null;
+    $scope.$on('feature:click', function(ev, item){
+       if($scope.l_prev_sel != null){
+            $scope.l_prev_sel.item.setStyle({color: $scope.l_prev_sel.color});
+       }
+       var prev_color = null;
+       for(x in item._layers){
+           prev_color = item._layers[x].options.color;
+           break;
+       }
+       $scope.l_prev_sel = {item: item, color: prev_color};
+       item.setStyle({color: 'yellow'});
+    });
   }
   
 ]);
