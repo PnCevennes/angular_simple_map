@@ -164,7 +164,7 @@ app.factory('MapsServices', ['$http', 'filterFilter', function($http, filterFilt
       },
 
       getAll: function() {
-        this.load();
+        this.loadData();
         return this.maps;
       },
       getFirst: function() {
