@@ -36,7 +36,7 @@ Structure du fichier map.json
           "overlays": {} //liste des couches de carte
         }
     }
-    ```
+```
 
 
 Ajouter des fonds de cartes
@@ -51,7 +51,7 @@ Ajouter des fonds de cartes
               "active": true,
               "options": {"format": "image/png","transparent": true,"layers": 16 }
             }
-    ```
+```
 * IGN
 ```json
          {
@@ -62,7 +62,7 @@ Ajouter des fonds de cartes
               "active" : true,
               "options": {"maxZoom": 19, "attribution": "IGN"}
             },
-    ```
+ ```
 * XYZ
 ```json
         {
@@ -72,7 +72,7 @@ Ajouter des fonds de cartes
               "active" : false,
               "options": {"maxZoom": 12, "minZoom":2, "attribution": "Map data © <a href='http://opencyclemap.org'>opencyclemap</a> contributors"}
             }
-    ```
+```
     
 * JSON
 ```json
@@ -83,7 +83,7 @@ Ajouter des fonds de cartes
               "active": "true",
               "options":"{}"
             }
-    ```
+```
 
 Interactions json
 =================
