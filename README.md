@@ -7,8 +7,7 @@ Configuration de l'application
 
 * Copier le fichier map.json.sample 
 
-    ::
-    
+
         cd data
         cp map.json.sample map.json
         
@@ -42,6 +41,8 @@ Structure du fichier map.json
 Ajouter des fonds de cartes
 ===========================
 
+
+
 * WMS
 ```json
          {
@@ -52,6 +53,10 @@ Ajouter des fonds de cartes
               "options": {"format": "image/png","transparent": true,"layers": 16 }
             }
 ```
+
+Pour voir l'ensemble des options disponibles se référer à la documentation de leaflet
+http://leafletjs.com/reference.html#tilelayer-wms-options
+
 * IGN
 ```json
          {
@@ -63,6 +68,8 @@ Ajouter des fonds de cartes
               "options": {"maxZoom": 19, "attribution": "IGN"}
             },
  ```
+Pour voir l'ensemble des options disponibles se référer à la documentation de leaflet http://leafletjs.com/reference.html#tilelayer-options 
+
 * XYZ
 ```json
         {
@@ -73,7 +80,8 @@ Ajouter des fonds de cartes
               "options": {"maxZoom": 12, "minZoom":2, "attribution": "Map data © <a href='http://opencyclemap.org'>opencyclemap</a> contributors"}
             }
 ```
-    
+Pour voir l'ensemble des options disponibles se référer à la documentation de leaflet http://leafletjs.com/reference.html#tilelayer-options
+  
 * JSON
 ```json
         {
@@ -87,3 +95,26 @@ Ajouter des fonds de cartes
 
 Interactions json
 =================
+Le paramètre option des couches correspond à une chaine de caratère qui est évaluée et transformé en javascript. De cette façon il est possible de réaliser toutes les interractions définies par l'API Leaflet.
+
+http://leafletjs.com/reference.html#geojson
+
+* Changer le style de la couche en fonction d'une propriété
+
+```json
+    "options":"{style: function (feature) { return { color: feature.properties.macouleur, opacity: 1, fillOpacity: 0.2}; }}"
+```
+
+* Ajouter une popup lors de la selection d'une feature sur la carte
+
+```json
+    "options":"{onEachFeature: function (feature, layer) { if (feature.properties && feature.properties.name, {noHide:false}) { layer.bindPopup(feature.properties.name); } } }"
+```
+
+
+* Changer la couleur de l'élément lors de la selection. La syntaxe n'est pas identique à celle définit par leaflet et est surchargé par angular au travers d'un événement broadcast.
+
+
+```json
+    "options":"{onEachFeature: function (feature, layer) {layer.on('click', function(e){$rootScope.$apply($rootScope.$broadcast(\"feature:click\", layer));});} }"
+```
