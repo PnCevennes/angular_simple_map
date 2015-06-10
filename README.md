@@ -1,5 +1,5 @@
 # angular_simple_map
-Petite application permettant de créer une catothèque de façon très simplifiée. Mis en place au Parc Natial des Cévennes de façon à proposer des cartes aux utilisateurs avec des connexions réseaux bas débits
+Petite application permettant de créer une catothèque de façon très simplifiée. Mis en place au Parc National des Cévennes de façon à proposer des cartes aux utilisateurs avec des connexions réseaux bas débits
 
 
 Configuration de l'application
@@ -40,8 +40,6 @@ Structure du fichier map.json
 
 Ajouter des fonds de cartes
 ===========================
-
-
 
 * WMS
 ```json
