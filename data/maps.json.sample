@@ -1,0 +1,82 @@
+[
+  {
+        "order" : 1,
+        "id": "test",
+        "geosearch": true,
+        "imageUrl": "http://i0.wp.com/blog.fabianpiau.com/wp-content/uploads/post/00043/osm-logo.png?resize=146,169", 
+        "name": "Exemple de configuration", 
+        "snippet": "Description de la carte",
+        "center": {
+            "lat": 44.3266459,
+            "lng": 3.6072651,
+            "zoom": 2
+        },
+        "legend":"<div id='legend'><nav class='clearfix'><b>Pays</b><div><span style='background: rgb(0, 51, 255);'></span></div></nav></div>",
+        "layers": { 
+          "baselayers": [
+            {
+              "name": "opencyclemap",
+              "type": "xyz",
+              "url" : "http://tile.opencyclemap.org/cycle/{z}/{x}/{y}.png", 
+              "active" : false,
+              "options": {"maxZoom": 12, "minZoom":2, "attribution": "Map data © <a href='http://opencyclemap.org'>opencyclemap</a> contributors"}
+            },{
+              "name": "OSM",
+              "type": "xyz",
+              "url" : "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", 
+              "active" : true,
+              "options": {"maxZoom": 12, "minZoom":2, "attribution": "Map data © <a href='http://openstreetmap.org'>OpenStreetMap</a> contributors"}
+            }
+          ],
+          "overlays": {
+            "pays": {
+              "name": "pays",
+              "url": "http://openlayers.org/en/v3.2.1/examples/data/geojson/countries.geojson",
+              "type": "geojson",
+              "active": "true",
+              "options":"{style: function (feature) { return { color:'#0033ff',  fill:'#0033ff', opacity: 0.4, fillOpacity: 0.2}; } , onEachFeature: function (feature, layer) {layer.on('click', function(e){$rootScope.$apply($rootScope.$broadcast(\"feature:click\", layer));}); if (feature.properties, {noHide:false}) { layer.bindPopup(\"<h2>\"+feature.properties.name+\"</h2>\");  } } }"
+            },
+            "temperature" : {
+              "name": "temperature",
+              "type": "wms",
+              "url": "http://gis.srh.noaa.gov/arcgis/services/NDFDTemps/MapServer/WMSServer?",
+              "active": true,
+              "options": {"format": "image/png","transparent": true,"layers": 16 }
+            }
+          }
+        }
+    },{
+        "order" : 2,
+        "id": "test2",
+        "geosearch": true,
+        "imageUrl": "http://farm9.staticflickr.com/8251/8504468344_41dc926cb1.jpg", 
+        "name": "Test 2 identique au 1er", 
+        "snippet": "Description de la carte",
+        "center": {
+            "lat": 44.3266459,
+            "lng": 3.6072651,
+            "zoom": 2
+        },
+        "legend":"<div id='legend'><nav class='clearfix'><b>Pays</b><div><span style='background: rgb(0, 51, 255);'></span></div></nav></div>",
+        "layers": { 
+          "baselayers": [
+            {
+              "name": "opencyclemap",
+              "type": "xyz",
+              "url" : "http://tile.opencyclemap.org/cycle/{z}/{x}/{y}.png", 
+              "active" : false,
+              "options": {"maxZoom": 12, "minZoom":2, "attribution": "Map data © <a href='http://opencyclemap.org'>opencyclemap</a> contributors"}
+            },{
+              "name": "OSM",
+              "type": "xyz",
+              "url" : "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", 
+              "active" : true,
+              "options": {"maxZoom": 12, "minZoom":2, "attribution": "Map data © <a href='http://openstreetmap.org'>OpenStreetMap</a> contributors"}
+            }
+          ]
+        }
+    }
+]
+
+
+
