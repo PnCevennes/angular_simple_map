@@ -37,3 +37,53 @@ Structure du fichier map.json
         }
     }
     ```
+
+
+Ajouter des fonds de cartes
+===========================
+
+* WMS
+```json
+         {
+              "name": "temperature",
+              "type": "wms",
+              "url": "http://gis.srh.noaa.gov/arcgis/services/NDFDTemps/MapServer/WMSServer?",
+              "active": true,
+              "options": {"format": "image/png","transparent": true,"layers": 16 }
+            }
+    ```
+* IGN
+```json
+         {
+              "name": "scan express",
+              "type": "ign",
+              "key" : "myAPIKey",
+              "layer" : "GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.STANDARD", 
+              "active" : true,
+              "options": {"maxZoom": 19, "attribution": "IGN"}
+            },
+    ```
+* XYZ
+```json
+        {
+              "name": "opencyclemap",
+              "type": "xyz",
+              "url" : "http://tile.opencyclemap.org/cycle/{z}/{x}/{y}.png", 
+              "active" : false,
+              "options": {"maxZoom": 12, "minZoom":2, "attribution": "Map data © <a href='http://opencyclemap.org'>opencyclemap</a> contributors"}
+            }
+    ```
+    
+* JSON
+```json
+        {
+              "name": "pays",
+              "url": "http://openlayers.org/en/v3.2.1/examples/data/geojson/countries.geojson",
+              "type": "geojson",
+              "active": "true",
+              "options":"{}"
+            }
+    ```
+
+Interactions json
+=================
