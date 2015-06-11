@@ -29,7 +29,7 @@ Structure du fichier map.json
             "lng": 3.6072651,
             "zoom": 2
         },//Paramètres d'initialisation de la vue carte
-        "legend":"<div id='legend'>ma légende ici en html</div>", //Légened
+        "legend":"<div id='legend'>ma légende ici en html</div>", //Légende
         "layers": { 
           "baselayers": [],//liste des fonds de carte
           "overlays": {} //liste des couches de carte
