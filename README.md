@@ -37,6 +37,7 @@ Structure du fichier map.json
     }
 ```
 
+[Exemple de paramètres de configuration de la carte](https://github.com/PnCevennes/angular_simple_map/blob/master/data/maps.json.sample#L3;L14)
 
 Ajouter des fonds de cartes
 ===========================
@@ -91,9 +92,12 @@ Pour voir l'ensemble des options disponibles se référer à la documentation de
             }
 ```
 
+[Exemple d'ajout de couches](https://github.com/PnCevennes/angular_simple_map/blob/master/data/maps.json.sample#L16;L30)
+
+
 Interactions json
 =================
-Le paramètre option des couches correspond à une chaine de caractère qui est évaluée et transformée en javascript. De cette façon il est possible de réaliser toutes les interractions définies par l'API Leaflet.
+Le paramètre option des couches correspond à une chaine de caratère qui est évaluée et transformé en javascript. De cette façon il est possible de réaliser toutes les interactions définies par l'API Leaflet.
 
 http://leafletjs.com/reference.html#geojson
 
@@ -110,7 +114,7 @@ http://leafletjs.com/reference.html#geojson
 ```
 
 
-* Changer la couleur de l'élément lors de la sélection. La syntaxe n'est pas identique à celle définie par leaflet et est surchargée par angular au travers d'un événement broadcast.
+* Changer la couleur de l'élément lors de la selection. La syntaxe n'est pas identique à celle définit par leaflet et est surchargé par angular au travers d'un événement broadcast.
 
 
 ```json
