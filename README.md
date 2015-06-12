@@ -16,7 +16,7 @@ Configuration de l'application
 Structure du fichier map.json
 ==============================
 
-```json
+```javascript
       {
         "order" : 1, //Ordre d'affichage de la carte
         "id": "idMap", //Identifiant unique de la carte utilisé comme URL
