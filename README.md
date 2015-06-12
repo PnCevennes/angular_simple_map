@@ -1,5 +1,5 @@
 # angular_simple_map
-Petite application permettant de créer une cartothèque de façon très simplifiée. Mis en place au Parc National des Cévennes de façon à proposer des cartes aux utilisateurs avec des connexions réseaux bas débits
+Petite application permettant de créer une cartothèque de façon très simplifiée. Mis en place au Parc national des Cévennes de façon à proposer des cartes aux utilisateurs avec des connexions réseaux bas débits
 
 
 Configuration de l'application
@@ -97,7 +97,7 @@ Pour voir l'ensemble des options disponibles se référer à la documentation de
 
 Interactions json
 =================
-Le paramètre option des couches correspond à une chaine de caratère qui est évaluée et transformé en javascript. De cette façon il est possible de réaliser toutes les interactions définies par l'API Leaflet.
+Le paramètre option des couches correspond à une chaine de caractère qui est évaluée et transformée en javascript. De cette façon il est possible de réaliser toutes les interactions définies par l'API Leaflet.
 
 http://leafletjs.com/reference.html#geojson
 
@@ -107,14 +107,14 @@ http://leafletjs.com/reference.html#geojson
     "options":"{style: function (feature) { return { color: feature.properties.macouleur, opacity: 1, fillOpacity: 0.2}; }}"
 ```
 
-* Ajouter une popup lors de la selection d'une feature sur la carte
+* Ajouter une popup lors de la sélection d'une feature sur la carte
 
 ```json
     "options":"{onEachFeature: function (feature, layer) { if (feature.properties && feature.properties.name, {noHide:false}) { layer.bindPopup(feature.properties.name); } } }"
 ```
 
 
-* Changer la couleur de l'élément lors de la selection. La syntaxe n'est pas identique à celle définit par leaflet et est surchargé par angular au travers d'un événement broadcast.
+* Changer la couleur de l'élément lors de la sélection. La syntaxe n'est pas identique à celle définie par leaflet et est surchargée par angular au travers d'un événement broadcast.
 
 
 ```json
