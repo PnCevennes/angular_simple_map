@@ -19,9 +19,9 @@ Structure du fichier map.json
 ```json
       {
         "order" : 1, //Ordre d'affichage de la carte
-        "id": "idMap", //Identifiant unique de la carte utiliser comme URL
-        "geosearch": true, //Activer où non le module geosearch de leaflet
-        "imageUrl": "miniature.jpg", //Image mignature de la carte
+        "id": "idMap", //Identifiant unique de la carte utilisé comme URL
+        "geosearch": true, //Activer ou non le module geosearch de leaflet
+        "imageUrl": "miniature.jpg", //Image miniature de la carte
         "name": "Nom de la carte",  //Nom
         "snippet": "Description de la carte", //Description
         "center": { 
