@@ -8,7 +8,7 @@ MapControllers.controller('ListMapController', [ '$scope', '$routeParams',"MapsS
       var dfd = MapsServices.loadData();
       dfd.then(function() {
         $scope.maps = MapsServices.maps;
-        $scope.$apply();
+        //$scope.$apply();
       });
     }
     $scope.orderProp = 'order';
@@ -16,16 +16,17 @@ MapControllers.controller('ListMapController', [ '$scope', '$routeParams',"MapsS
 ]);
 
 
-MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','MapsServices','LeafletServices', '$location','filterFilter','$http','$sce','$rootScope',
+MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','MapsServices','LeafletServices', '$location',
+    'filterFilter','$http','$sce','$rootScope','$window',
   
-  function($scope, $routeParams, MapsServices, LeafletServices, $location, filterFilter, $http, $sce, $rootScope) {
+  function($scope, $routeParams, MapsServices, LeafletServices, $location, filterFilter, $http, $sce, $rootScope, $window) {
     $scope.mapinfo = MapsServices.getOne($routeParams.mapsId);
     
     if (! MapsServices.maps.length) {
       var dfd = MapsServices.loadData();
       dfd.then(function() {
         $scope.mapinfo = MapsServices.getOne($routeParams.mapsId);
-        $scope.$apply();
+        //$scope.$apply();
       });
     }
     
@@ -78,7 +79,7 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
       });
       
       //Geosearch
-      if ($scope.mapinfo.geosearch) {
+      if (($scope.mapinfo.geosearch) && ($window.innerWidth>1000)) {
         var osmGeocoder = new L.Control.OSMGeocoder({
             collapsed: false,
             position: 'topright',
@@ -94,7 +95,7 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
       if ($scope.mapinfo.legend) {
         var legend = L.control({position: 'bottomright'});
         legend.onAdd = function (map) {
-          var div = L.DomUtil.create('div', 'info legend');
+          var div = L.DomUtil.create('div', 'info legend  visible-lg');
           div.innerHTML =$sce.trustAsHtml($scope.mapinfo.legend);
           return  div;
         };
@@ -147,15 +148,14 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
 ]);
 
 
-app.factory('MapsServices', ['$http', 'filterFilter', function($http, filterFilter) {
+app.factory('MapsServices', ['$http', 'filterFilter', '$q', function($http, filterFilter, $q) {
     return {
       maps:{},
     
       loadData : function() {
         self = this;
-        $injector = angular.injector(['ng']);
-        q = $injector.get('$q');
-        var deferred = q.defer();
+       
+        var deferred = $q.defer();
         $http.get('data/maps.json')
           .then(
             function(results) {
