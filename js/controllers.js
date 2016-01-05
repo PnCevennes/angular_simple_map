@@ -124,7 +124,7 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
 
     $scope.l_prev_sel = null;
     $scope.$on('feature:click', function(ev, item){
-       if($scope.l_prev_sel != null){
+       if($scope.l_prev_sel != null && $scope.l_prev_sel.item.feature.geometry.type != "Point"){
             $scope.l_prev_sel.item.setStyle({color: $scope.l_prev_sel.color, fill: $scope.l_prev_sel.fill});
        }
        var prev_color = null;
@@ -141,7 +141,9 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
           prev_fill = item.options.fill;
         }
        $scope.l_prev_sel = {item: item, color: prev_color, fill:prev_fill};
-       item.setStyle({color: 'yellow'});
+       if(item.feature.geometry.type != "Point"){
+          item.setStyle({color: 'yellow'});
+        }
     });
   }
   
