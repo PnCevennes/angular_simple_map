@@ -9,7 +9,7 @@ Configuration de l'application
 
 
         cd data
-        cp map.json.sample map.json
+        cp maps.json.sample maps.json
         
 * Modifier ce fichier de façon à afficher vos cartes
 
