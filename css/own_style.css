@@ -9,6 +9,39 @@
   margin:0;
   padding:0; 
 }
+@media screen {
+    #imgcontainer{display: none}
+    #impr_msg{
+        text-align: center;
+        visibility: hidden;
+        position: absolute;
+        height: 150px;
+        width: 250px;
+        top: 50%;
+        left: 50%;
+        margin-left: -125px;
+        margin-top: -75px;
+        z-index: 100;
+        background-color: #EEE;
+        border: 2px solid #CCC;
+        box-shadow: 3px 3px 8px #777;
+        border-radius: 5px;
+        padding: 10px;
+        padding-top: 20px;
+
+    }
+}
+@media print {
+    #impr_msg{display: none}
+    #mapcontainer{display: none}
+    #imgcontainer{
+        height: 10cm;
+        width: 17cm;
+    }
+    #imagec{
+        border: 1mm solid #999;
+    }
+}
 
 .container-fluid {
   padding: 0px;

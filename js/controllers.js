@@ -29,7 +29,7 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
         //$scope.$apply();
       });
     }
-    
+
     $scope.$watch('mapinfo', function(scope){
       if (!$scope.mapinfo) {
         return;
@@ -77,7 +77,7 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
           $scope.baselayers[key].map.addTo(map);
         }
       });
-      
+
       //Geosearch
       if (($scope.mapinfo.geosearch) && ($window.innerWidth>1000)) {
         var osmGeocoder = new L.Control.OSMGeocoder({
@@ -104,6 +104,17 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
       return $scope;
     }, true);
   
+    $scope.imprimer = angular.bind($scope, function(){
+        var msg = document.getElementById('impr_msg');
+        msg.style.visibility = 'visible';
+        leafletImage($scope.map, function(err, canvas){
+            var img = document.getElementById('imagec');
+            img.src = canvas.toDataURL();
+            window.print();
+            msg.style.visibility = 'hidden';
+        });
+    });
+    
 
     $scope.changeTiles = function(nummap) {
       if ($scope.baselayers[nummap].active) {
