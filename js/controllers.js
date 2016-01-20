@@ -21,6 +21,8 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
   
   function($scope, $routeParams, MapsServices, LeafletServices, $location, filterFilter, $http, $sce, $rootScope, $window) {
     $scope.mapinfo = MapsServices.getOne($routeParams.mapsId);
+    $scope.preview = false;
+    $scope.image = '';
     
     if (! MapsServices.maps.length) {
       var dfd = MapsServices.loadData();
@@ -29,6 +31,10 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
         //$scope.$apply();
       });
     }
+
+    $scope.protect_preview = function(e){
+        e.stopPropagation();
+    };
 
     $scope.$watch('mapinfo', function(scope){
       if (!$scope.mapinfo) {
@@ -109,9 +115,12 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
         msg.style.visibility = 'visible';
         leafletImage($scope.map, function(err, canvas){
             var img = document.getElementById('imagec');
-            img.src = canvas.toDataURL();
-            window.print();
+            $scope.image = canvas.toDataURL();
+            //window.print();
             msg.style.visibility = 'hidden';
+            $rootScope.$apply(function(){
+                $scope.preview = true;
+            });
         });
     });
     

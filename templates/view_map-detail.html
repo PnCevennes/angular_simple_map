@@ -5,7 +5,7 @@
   </div>
 
   <div id="mapcontainer" class="container-fluid">
-    <h3 id="impr_msg">Veuillez patienter pendant que la préparation du document.</h3>
+    <h3 id="impr_msg">Veuillez patienter pendant la préparation du document.</h3>
     <div id="mapc"></div>
     <div style="position: absolute; bottom: 10px; left: 10px;">
       <button  ng-repeat="(key, baselayer) in baselayers"  ng-click="changeTiles(key)" id="activate-scan-{{key}}" class="btn " ng-class="{false: 'btn-warning', true: 'btn-primary'}[baselayer.active]" >{{baselayer.name}}</button>
@@ -14,8 +14,12 @@
         <button class="btn btn-danger" ng-click="imprimer()">Imprimer</button>
     </div>
   </div>
-  <div id="imgcontainer">
-      <h1><img src="img/Spirale_orange.png" style="height: 30px;" /> {{mapinfo.name}}</h1>
-      <img id="imagec" src="" />
+  <div class="imgcontainer" ng-show="preview">
+      <div class="imgbgnd" ng-click="preview=false">
+          <div class="imgfgnd" ng-click="protect_preview($event)">
+              <h1><img src="img/Spirale_orange.png" style="height: 30px;" /> {{mapinfo.name}}</h1>
+              <img id="imgc" ng-src="{{image}}" />
+          </div>
+    </div>
   </div>
 </div>

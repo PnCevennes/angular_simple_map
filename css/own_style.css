@@ -1,7 +1,7 @@
-
 #main-logo {
   height:350px;
 }
+
 #mapc {
   width: 100%;
   position: fixed;
@@ -9,37 +9,65 @@
   margin:0;
   padding:0; 
 }
+
+#imgc{
+    width: 100%;
+    border: 1px solid #AAA;
+}
+
+.imgfgnd h1{
+    border-bottom: 1px solid #999;
+    margin-bottom: 10mm;
+}
+
 @media screen {
-    #imgcontainer{display: none}
+    .imgbgnd{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0,0,0,0.8);
+        z-index: 1000;
+    }
+    .imgfgnd{
+        position: relative;
+        height: 297mm;
+        width: 210mm;
+        top: 0;
+        left: 50%;
+        margin-left: -105mm;
+        padding: 15mm;
+        background-color: white;
+    }
     #impr_msg{
         text-align: center;
+        vertical-align: middle;
         visibility: hidden;
         position: absolute;
-        height: 150px;
-        width: 250px;
+        width: 350px;
         top: 50%;
         left: 50%;
-        margin-left: -125px;
-        margin-top: -75px;
+        margin-left: -175px;
+        margin-top: -100px;
         z-index: 100;
         background-color: #EEE;
         border: 2px solid #CCC;
         box-shadow: 3px 3px 8px #777;
         border-radius: 5px;
-        padding: 10px;
-        padding-top: 20px;
+        padding: 20px;
+        padding-top: 50px;
+        padding-bottom: 50px;
 
     }
 }
 @media print {
     #impr_msg{display: none}
     #mapcontainer{display: none}
-    #imgcontainer{
-        height: 10cm;
-        width: 17cm;
+    .imgbgnd{
+        visibility: hidden;
     }
-    #imagec{
-        border: 1mm solid #999;
+    .imgfgnd{
+        visibility: visible;
     }
 }
 
