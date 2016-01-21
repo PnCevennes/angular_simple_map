@@ -111,18 +111,33 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
     }, true);
   
     $scope.imprimer = angular.bind($scope, function(){
-        var msg = document.getElementById('impr_msg');
-        msg.style.visibility = 'visible';
-        leafletImage($scope.map, function(err, canvas){
-            var img = document.getElementById('imagec');
-            $scope.image = canvas.toDataURL();
-            //window.print();
-            msg.style.visibility = 'hidden';
-            $rootScope.$apply(function(){
-                $scope.preview = true;
-            });
-        });
+        $scope.preview = true;
+        var bnds = $scope.map.getBounds();
+        var mp = $scope.map.getContainer();
+        var imgc = document.getElementById('preview');
+        var ow = mp.style.width;
+        var oh = mp.style.height;
+        mp.style.width = '179mm';
+        mp.style.height = '139mm';
+        $scope.map.invalidateSize();
+        $scope.map.fitBounds(bnds);
+        imgc.appendChild(mp);
+
+        $scope.preview_map = mp;
     });
+
+    $scope.close_preview = function(){
+        var cnt = document.getElementById('mcontainer');
+        var mp = $scope.preview_map;
+        var bnds = $scope.map.getBounds();
+        cnt.appendChild(mp);
+        mp.style.width = '100%';
+        mp.style.height = '100%';
+        $scope.map.invalidateSize();
+        $scope.map.fitBounds(bnds);
+        $scope.preview = false;
+    };
+
     
 
     $scope.changeTiles = function(nummap) {

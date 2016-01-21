@@ -21,6 +21,11 @@
 }
 
 @media screen {
+    #preview{
+        height: 14cm;
+        width: 18cm;
+        border: 2px solid #999;
+    }
     .imgbgnd{
         position: absolute;
         top: 0;
@@ -62,7 +67,17 @@
 }
 @media print {
     #impr_msg{display: none}
-    #mapcontainer{display: none}
+    #mapcontainer{
+        width: 210mm;
+        visibility: hidden;
+    }
+    #mapc{
+        width: 100%;
+        visibility: visible;
+    }
+    .leaflet-control{
+        display: none;
+    }
     .imgbgnd{
         visibility: hidden;
     }
