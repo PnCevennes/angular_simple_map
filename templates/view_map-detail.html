@@ -1,25 +1,24 @@
-<div> 
-  <div class="navbar navbar-inverse" role="navigation">
-      <a href="#maps" class="navbar-brand"><img id="nav-logo-home" class="img-responsive center-block" alt="hom pnc" src="img/Spirale_orange.png" style="height:30px"></a><h3 id="map-title">{{mapinfo.name}}</h3></li>
-    
-  </div>
+<div id="main_container" ng-click="close_preview()"> 
+    <div id="navigation" class="navbar navbar-inverse print_hidden" role="navigation">
+        <a href="#maps" class="navbar-brand"><img id="nav-logo-home" class="img-responsive center-block" alt="hom pnc" src="img/Spirale_orange.png" style="height:30px"></a><h3 id="map-title">{{mapinfo.name}}</h3></li>
 
-  <div id="mapcontainer" class="container-fluid">
-    <h3 id="impr_msg">Veuillez patienter pendant la préparation du document.</h3>
-    <div id="mcontainer"><div id="mapc"></div></div>
-    <div style="position: absolute; bottom: 10px; left: 10px;">
-      <button  ng-repeat="(key, baselayer) in baselayers"  ng-click="changeTiles(key)" id="activate-scan-{{key}}" class="btn " ng-class="{false: 'btn-warning', true: 'btn-primary'}[baselayer.active]" >{{baselayer.name}}</button>
     </div>
-    <div style="position: absolute; bottom: 50px; left: 10px;">
-        <button class="btn btn-danger" ng-click="imprimer()">Imprimer</button>
+
+    <div id="mapcontainer" class="container-fluid">
+        <div id="mcontainer" ng-click="protect_preview($event)">
+            <h1 id="print_title" class="print_visible">
+                <img src="img/Spirale_orange.png" style="height:30px">
+                {{mapinfo.name}}
+            </h1>
+            <div id="mconstraint">
+                <div id="mapc"></div>
+            </div>
+        </div>
+        <div class="print_hidden" style="position: absolute; bottom: 10px; left: 10px;">
+            <button  ng-repeat="(key, baselayer) in baselayers"  ng-click="changeTiles(key)" id="activate-scan-{{key}}" class="btn " ng-class="{false: 'btn-warning', true: 'btn-primary'}[baselayer.active]" >{{baselayer.name}}</button>
+        </div>
+        <div class="print_hidden" style="position: absolute; bottom: 50px; left: 10px;">
+            <button class="btn btn-success"  ng-click="imprimer($event)">Version imprimable</span></button>
+        </div>
     </div>
-  </div>
-  <div class="imgcontainer" ng-show="preview">
-      <div class="imgbgnd" ng-click="close_preview()">
-          <div class="imgfgnd" ng-click="protect_preview($event)">
-              <h1><img src="img/Spirale_orange.png" style="height: 30px;" /> {{mapinfo.name}}</h1>
-              <div id="preview"></div>
-          </div>
-    </div>
-  </div>
 </div>

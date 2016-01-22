@@ -21,8 +21,6 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
   
   function($scope, $routeParams, MapsServices, LeafletServices, $location, filterFilter, $http, $sce, $rootScope, $window) {
     $scope.mapinfo = MapsServices.getOne($routeParams.mapsId);
-    $scope.preview = false;
-    $scope.image = '';
     
     if (! MapsServices.maps.length) {
       var dfd = MapsServices.loadData();
@@ -109,33 +107,90 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
       }
       return $scope;
     }, true);
+
+    $scope.preview = false;
   
-    $scope.imprimer = angular.bind($scope, function(){
-        $scope.preview = true;
+    $scope.imprimer = angular.bind($scope, function(e){
+        e.stopPropagation();
         var bnds = $scope.map.getBounds();
-        var mp = $scope.map.getContainer();
-        var imgc = document.getElementById('preview');
-        var ow = mp.style.width;
-        var oh = mp.style.height;
-        mp.style.width = '179mm';
-        mp.style.height = '139mm';
+        var cnt = document.getElementById('mcontainer');
+        var mc = document.getElementById('mconstraint');
+        var mp = document.getElementById('mapc');
+        var ttl = document.getElementById('print_title');
+
+
+        ttl.style.display = 'block';
+        ttl.style.position = 'absolute';
+        ttl.style.top = '1.5cm';
+        ttl.style.left = '2cm';
+        
+        cnt.style.width = '210mm';
+        cnt.style.height = '270mm';
+        cnt.style.position = 'absolute';
+        cnt.style.left = '50%';
+        cnt.style.top = '0';
+        cnt.style.marginLeft = '-105mm';
+        cnt.style.backgroundColor = 'white';
+        //cnt.style.border = '1px solid #222';
+        cnt.style.zIndex = '200';
+
+        mc.style.position = 'absolute';
+        mc.style.top = '4cm';
+        mc.style.left = '2cm';
+        mc.style.width = '170mm';
+        mc.style.height = '130mm';
+        
+        mp.style.position = 'absolute';
+        mp.style.width = '168mm';
+        mp.style.height = '128mm';
+        mp.style.border = '2px solid #888';
+
+        //var mp = $scope.map.getContainer();
         $scope.map.invalidateSize();
         $scope.map.fitBounds(bnds);
-        imgc.appendChild(mp);
+        $scope.preview = true;
 
-        $scope.preview_map = mp;
     });
 
     $scope.close_preview = function(){
-        var cnt = document.getElementById('mcontainer');
-        var mp = $scope.preview_map;
-        var bnds = $scope.map.getBounds();
-        cnt.appendChild(mp);
-        mp.style.width = '100%';
-        mp.style.height = '100%';
-        $scope.map.invalidateSize();
-        $scope.map.fitBounds(bnds);
-        $scope.preview = false;
+        if($scope.preview){
+            var cnt = document.getElementById('mcontainer');
+            var mc = document.getElementById('mconstraint');
+            var mp = document.getElementById('mapc');
+            var nav = document.getElementById('navigation');
+            var ttl = document.getElementById('print_title');
+            var bnds = $scope.map.getBounds();
+
+            ttl.style.display = 'none';
+
+            cnt.style.position = 'absolute';
+            cnt.style.width = '100%';
+            cnt.style.height = '100%';
+            cnt.style.top = '50px';
+            cnt.style.left = '0';
+            cnt.style.border = 'none';
+            cnt.style.zIndex = '0';
+
+            mc.style.position = 'absolute';
+            mc.style.top = '50px';
+            mc.style.left = '0';
+            mc.style.width = '100%';
+            mc.style.height = '100%';
+            mc.style.zIndex = '0';
+
+            mp.style.position = 'fixed';
+            mp.style.top = '58px';
+            mp.style.left = '0';
+            mp.style.width = '100%';
+            mp.style.height = '100%';
+            mp.style.border = 'none';
+            mp.style.zIndex = '0';
+
+            nav.style.zIndex = '100';
+            $scope.map.invalidateSize();
+            $scope.map.fitBounds(bnds);
+            $scope.preview = false;
+        }
     };
 
     
