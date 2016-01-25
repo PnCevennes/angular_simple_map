@@ -1,8 +1,11 @@
 
 var MapControllers = angular.module('MapControllers', []);
 
-MapControllers.controller('ListMapController', [ '$scope', '$routeParams',"MapsServices", 
-  function ($scope,$http,  MapsServices) {
+MapControllers.controller('ListMapController', [ '$scope', '$routeParams',
+  "MapsServices",
+  "cst_homepage",
+  function ($scope,$http,  MapsServices, cst_homepage) {
+    $scope.cst = cst_homepage;
     $scope.maps =  MapsServices.maps;
     if (! $scope.maps.length) {
       var dfd = MapsServices.loadData();

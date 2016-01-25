@@ -1,6 +1,7 @@
 var app = angular.module('simpleMap', [
   'ngRoute',
-  'MapControllers'
+  'MapControllers',
+  'simpleMap.config'
 ]);
 
 
@@ -19,3 +20,4 @@ app.config(['$routeProvider',
         redirectTo: '/maps'
       });
   }]);
+

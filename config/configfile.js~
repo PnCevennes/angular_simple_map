@@ -1,0 +1,3 @@
+app.module('myApp.config', [])
+.constant('HOMEPAGE', {"MAIN_TITLE":"Parc national des Cévennes","SUB_TITLE":"Cartographie simplifiée","MAIN_TEXT":""}
+);

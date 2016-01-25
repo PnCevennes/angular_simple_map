@@ -1,7 +1,4 @@
 
-#main-logo {
-  height:350px;
-}
 #mapc {
   width: 100%;
   position: fixed;
@@ -45,3 +42,31 @@
   width: 30px;
   margin-right:5px;
 }
+
+
+.previews .thumbnail {
+  background-image: url("img/premium-bg.png");
+  text-align: center;
+}
+
+
+
+/*************************FOOTER********************************************/
+
+.bg-footer-bottom {
+  background-color: #162029;
+  padding-bottom: 32px;
+  padding-top: 32px;
+  color:white;
+}
+.copy-left {
+  display: inline-block;
+  text-align: right;
+  margin: 0;
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+} 

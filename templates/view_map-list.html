@@ -1,53 +1,13 @@
- <style>
-  header.pnc {
-    /*background-color: orange;//#8f4521;// #b84d45;
-    background-image: url("img/bg.png");*/
-    background: -webkit-linear-gradient(90deg, #F09819 30%, #EDDE5D 90%); /* Chrome 10+, Saf5.1+ */
-    background:    -moz-linear-gradient(90deg, #F09819 30%, #EDDE5D 90%); /* FF3.6+ */
-    background:     -ms-linear-gradient(90deg, #F09819 30%, #EDDE5D 90%); /* IE10 */
-    background:      -o-linear-gradient(90deg, #F09819 30%, #EDDE5D 90%); /* Opera 11.10+ */
-    background:         linear-gradient(90deg, #F09819 30%, #EDDE5D 90%); /* W3C */
 
-    color: #fff;
-    padding: 50px 0;
-    text-align: center;
-  }
-  .previews .thumbnail {
-    background-image: url("img/premium-bg.png");
-    text-align: center;
-  }
-  .bg-footer-bottom {
-    background-color: #162029;
-    padding-bottom: 32px;
-    padding-top: 32px;
-    color:white;
-  }
-   .copy-left {
-      display: inline-block;
-      text-align: right;
-      margin: 0;
-      -moz-transform: scaleX(-1);
-      -o-transform: scaleX(-1);
-      -webkit-transform: scaleX(-1);
-      transform: scaleX(-1);
-      filter: FlipH;
-      -ms-filter: "FlipH";
-    } 
-</style>
+<div ng-if="cst.CUSTOM_TEMPLATE" ng-include src="cst.CUSTOM_TEMPLATE"></div>
+<div ng-if="!cst.CUSTOM_TEMPLATE" ng-include src="'templates/include_home-header.html'"></div>
 
-<header class="pnc">
-  <div class="container">
-    <p><img id="main-logo" class="img-responsive center-block" alt="logo pnc" src="img/Spirale_noire.png"></p>
-    <span class="brand-name">Parc national des Cévennes</span>
-    <h1>Cartographie simplifiée</h1>
-  </div>
-</header>
 <div class="container">
   <div class="row home-intro text-center">
     <div class="col-lg-12">
-      <h2 class="tagline">Liste des cartes</h2>
-      <p class="lead">
-        Les cartes présentées ne permettent qu'une consultation des données. Merci de nous signaler les erreurs.
+      <h2 class="tagline" ng-if="cst.MAIN_TEXT">{{::cst.MAIN_TEXT}}</h2>
+      <p class="lead"  ng-if="cst.SUB_TEXT">
+        {{::cst.SUB_TEXT}}
       </p>
       <hr class="small">
     </div>
@@ -76,4 +36,3 @@
         <p class="center-text"><span class="copy-left">&copy;</span>PnC-FT 2015</p>
     </div>
 </div>
-      
