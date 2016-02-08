@@ -36,7 +36,6 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
       var dfd = MapsServices.loadData();
       dfd.then(function() {
         $scope.mapinfo = MapsServices.getOne($routeParams.mapsId);
-        //$scope.$apply();
       });
     }
     
@@ -162,7 +161,7 @@ MapControllers.controller('DetailMapController', [ '$scope', '$routeParams','Map
 
 app.factory('MapsServices', ['$http', 'filterFilter', '$q', function($http, filterFilter, $q) {
     return {
-      maps:{},
+      maps:[],
     
       loadData : function() {
         self = this;
