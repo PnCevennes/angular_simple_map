@@ -1,8 +1,8 @@
 {
     "name": "ng-mapCreator-fp",
     "version": "0.0.1",
-    "homepage": "https://github.com/PnCevennes/ng-mapCreator-fp",
-    "description": "Generateur de carte avec filtres et panel à partir d'un fichier de configuration",
+    "homepage": "https://github.com/PnCevennes/angular_simple_map",
+    "description": "Generateur de carte ultrasimple",
     "dependencies": {
         "leaflet": ">= 0.7.0",
         "angular": ">=1.4.8",
