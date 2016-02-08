@@ -1,31 +1,35 @@
 
-<div ng-if="cst.CUSTOM_TEMPLATE" ng-include src="cst.CUSTOM_TEMPLATE"></div>
-<div ng-if="!cst.CUSTOM_TEMPLATE" ng-include src="'templates/include_home-header.html'"></div>
+<div id="wrap">
+  <div ng-if="cst.CUSTOM_TEMPLATE" ng-include src="cst.CUSTOM_TEMPLATE"></div>
+  <div ng-if="!cst.CUSTOM_TEMPLATE" ng-include src="'templates/include_home-header.html'"></div>
 
-<div class="container">
-  <div class="row home-intro text-center">
-    <div class="col-lg-12">
-      <h2 class="tagline" ng-if="cst.MAIN_TEXT">{{::cst.MAIN_TEXT}}</h2>
-      <p class="lead"  ng-if="cst.SUB_TEXT">
-        {{::cst.SUB_TEXT}}
-      </p>
-      <hr class="small">
-    </div>
-    </div>
-    <div class="row previews">
-        <div ng-repeat="map in maps | filter:query | orderBy:orderProp"  class="col-lg-4 col-sm-6">
-          <div class="thumbnail">
-            <div class="img-overview">
-              <a class="post-image-link" href="#/maps/{{map.id}}">
-                  <img class="img-responsive" alt="{{map.name}}" <img ng-src="{{map.imageUrl}}"></a>
-              </a>
-            </div>
-            <div class="caption">
-              <h3>{{map.name}}</h3>
-              <a class="btn btn-default" href="#/maps/{{map.id}}">Voir la carte</a>
+  <link ng-if="cst.CUSTOM_CSS" rel="stylesheet" href="/config/custom/css/custom-home.css">
+
+  <div class="container">
+    <div class="row home-intro text-center">
+      <div class="col-lg-12">
+        <h2 class="tagline" ng-if="cst.MAIN_TEXT">{{::cst.MAIN_TEXT}}</h2>
+        <p class="lead"  ng-if="cst.SUB_TEXT">
+          {{::cst.SUB_TEXT}}
+        </p>
+        <hr class="small">
+      </div>
+      </div>
+      <div class="row previews">
+          <div ng-repeat="map in maps | filter:query | orderBy:orderProp"  class="col-lg-4 col-sm-6">
+            <div class="thumbnail">
+              <div class="img-overview">
+                <a class="post-image-link" href="#/maps/{{map.id}}">
+                    <img class="img-responsive" alt="{{map.name}}" <img ng-src="{{map.imageUrl}}"></a>
+                </a>
+              </div>
+              <div class="caption">
+                <h3>{{map.name}}</h3>
+                <a class="btn btn-default" href="#/maps/{{map.id}}">Voir la carte</a>
+              </div>
             </div>
           </div>
-        </div>
+      </div>
     </div>
   </div>
 </div>

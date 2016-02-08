@@ -1,11 +1,18 @@
 
 var MapControllers = angular.module('MapControllers', []);
 
-MapControllers.controller('ListMapController', [ '$scope', '$routeParams',
+MapControllers.controller('ListMapController', [ '$scope',  '$routeParams',
   "MapsServices",
-  "cst_homepage",
-  function ($scope,$http,  MapsServices, cst_homepage) {
+  "cst_homepage", 
+  function ($scope, $http, MapsServices, cst_homepage) {
     $scope.cst = cst_homepage;
+    
+    
+    if(cst_homepage.CUSTOM_CSS){
+      console.log('<link id="myViewName" href="'+cst_homepage.CUSTOM_CSS+'" rel="stylesheet">');
+      //angular.element('head').append('<link id="home-page" href="'+cst_homepage.CUSTOM_CSS+'" rel="stylesheet">');
+    }
+    
     $scope.maps =  MapsServices.maps;
     if (! $scope.maps.length) {
       var dfd = MapsServices.loadData();
