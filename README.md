@@ -1,6 +1,20 @@
 # angular_simple_map
 Petite application permettant de créer une cartothèque de façon très simplifiée. Mis en place au Parc national des Cévennes de façon à proposer des cartes aux utilisateurs avec des connexions réseaux bas débits
 
+Installation
+==============================
+* Préqueris
+```
+  npm install bower
+```
+
+* Copier le dépot et lancer bower
+```
+  wget https://github.com/PnCevennes/ng-mapCreator-fp/archive/master.zip
+  unzip master.zip
+  cd ng-mapCreator-fp
+  bower install
+```
 
 Configuration de l'application
 ==============================
